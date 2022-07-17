@@ -4,8 +4,14 @@
 // mockaroo.com 
 header('Content-Type: application/json; charset=utf-8');
 
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+      echo json_encode(array('error' => 'Invalid request method'));
+      exit;
+}
+
 $names = ["Frannie","Lilith","Silvia","Kata","Deanna","Dallas","Koralle","Eddie","Carol-jean","Verine","Daveen","Prudi","Magdaia","Cam","Isobel","Talya","Jori","Lurleen","Linnea","Madelin","Winni","Jemie","Chrystal","Linnet","Daphene","Janice","Lynde","Dre","Josselyn","Christin","Tim","Aidan","Ollie","Scarlet","Jacquette","Shaylyn","Tory","Juliana","Lin","Inna","Darryl","Margalo","Nikolia","Cathrine","Maighdiln","Gilemette","Constantia","Korry","Dorthea","Janean","Gilemette","Bobby","Ryann","Vallie","Maia","Carleen","Dixie","Philly","Grete","Gwendolin","Corliss","Honoria","Teresa","Isobel","Corenda","Jayme","Eve","Mimi","Cybil","Loren","Fanchette","Hester","Felice","Vanessa","Ronnie","Norine","Bernardine","Marita","Adella","Dorelia","Nertie","Robbin","Wendy","Corabella","Barbra","Tiffy","Nadeen","Raf","Cass","Pearla","Aubrette","Danielle","Julissa","Alanna","Libbey","Cathleen","Mathilda","Florella","Ansley","Mirella"];
 $roomName = implode("-", array_rand(array_flip($names), 5));
+
  $arr = [
    "response_type" => "in_channel",
    "blocks" => [
@@ -13,7 +19,7 @@ $roomName = implode("-", array_rand(array_flip($names), 5));
             "type" => "section", 
             "text" => [
                "type" => "mrkdwn", 
-               "text" => "Join a meeting with the following link." 
+               "text" => "Join a meeting." 
             ], 
             "accessory" => [
                   "type" => "button", 
